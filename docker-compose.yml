@@ -11,3 +11,12 @@ services:
       - 27017:27017
     volumes:
       - ./mongo-data-latest:/data/db
+  
+  top_api:
+    image: top-api:latest
+    container_name: top-api
+    restart: always
+    ports:
+      - 3000:300
+    volumes:
+      - ./.env:/opt/app/.env
