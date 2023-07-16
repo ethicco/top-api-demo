@@ -16,13 +16,11 @@ export class ReviewService {
   }
 
   async delete(id: string) {
-    return this.reviewModel.findByIdAndDelete(id).exec();
+    return this.reviewModel.findByIdAndDelete(id);
   }
 
   async findByProductId(productId: string) {
-    return this.reviewModel.find({
-      populate: new Types.ObjectId(productId),
-    });
+    return this.reviewModel.find({ productId: new Types.ObjectId(productId) });
   }
 
   async deleteByProductId(productId: string) {

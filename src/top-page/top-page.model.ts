@@ -38,10 +38,10 @@ export class TopPageModel {
   @Prop()
   secondCategory: string;
 
-  @Prop()
+  @Prop({ unique: true })
   alias: string;
 
-  @Prop()
+  @Prop({ text: true })
   title: string;
 
   @Prop()
@@ -65,4 +65,6 @@ export class TopPageModel {
 
 export type TopPageDocument = HydratedDocument<TopPageModel>;
 
-export const TopPageSchema = SchemaFactory.createForClass(TopPageModel);
+export const TopPageSchema = SchemaFactory.createForClass(TopPageModel).index({
+  '$**': 'text',
+});
